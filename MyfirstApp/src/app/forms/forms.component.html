@@ -1,0 +1,127 @@
+<p>A simple form about user data!</p>
+<div class="col-sm-6">
+
+  <form #simpleForm="ngForm" (ngSubmit)="getFormData(simpleForm.value)">
+      <input type="text" class="form-control" ngModel name="user" placeholder="Enter your Name please">
+      <br><br>
+      <input type="text" class="form-control" ngModel name="age" placeholder="Enter your Age">
+      <br><br>
+      <input type="text" class="form-control" ngModel name="address" placeholder="Enter your Address">
+      <br><br>
+      <input type="password" class="form-control" ngModel name="password" placeholder="Enter your Unique Password">
+      <br><br>
+      
+      <button type ="submit">Submit form</button>
+  </form>
+</div>
+ <br><br><br>
+ <div class="col-sm-6">
+    <h2 style="color: lawngreen;">A log in form </h2>
+        <form #logInForm="ngForm" (ngSubmit)="getFormData(logInForm.value)">
+            <input type="text" class="form-control" ngModel name="Email" placeholder="Enter your Email">
+            <br><br>
+            <input type="password" class="form-control" ngModel name="Password" placeholder="Enter your password">
+            <br><br>
+            <button class="btn btn-outline-primary" type="submit">Log in </button>
+        </form>
+  </div>
+    <br> <br><br>
+
+    <!--Form with bootstrap classes and Form validation is below-->
+  <div class="col-sm-6">
+      <h1 style="color: blueviolet;">Bootstrap form example</h1>
+      <form #bootStrapFormEx="ngForm" (ngSubmit)="getFormData(bootStrapFormEx.value)">
+          <div class="form-group">
+            <label >Email address</label>
+            <input required #email="ngModel"  type="email" class="form-control" ngModel email name ="useremail" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+             <span *ngIf="email.invalid && email.touched" class="error">Email is Invalid</span>
+             <!--Upar wali line me if ke ander and condition laga rahe hai and we are usuing the
+              ng-touched and  ng-invalid classes... And input me only email likkhne bhar
+               se woh i/p email ke format me hai nhi yyeh check kar lega-->
+          </div>
+          <div class="form-group">
+            <label >Password</label>
+            <input required #passWord="ngModel" minlength="5" maxlength="15" type="password" class="form-control" ngModel name ="password" placeholder="Password">
+            <small id="emailHelp" class="form-text text-muted">Password length should be min 5 and Max 15 charactor.</small>
+            <span *ngIf="passWord.invalid && passWord.touched" class="error">Password is Mendatory</span>
+          </div>
+         
+          <div class="form-group">
+            <label >Address</label>
+            <input pattern="[a-zA-Z ,.]*" required #address="ngModel"  type="text" class="form-control" ngModel name="address" placeholder="Enter Address">
+          
+             <span *ngIf="address.invalid && address.touched" class="error">Please enter your Valid address</span>
+            
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input"  >
+            <label class="form-check-label" >Check me out</label>
+          </div>
+          <button [disabled]="bootStrapFormEx.invalid" type="submit" class="btn btn-primary">Submit</button>
+          <!--Upar disabled property me bootStrapFormEx ka vaaue daaal rhe hai. If all fields are invald
+            Then you can not submit the form data-->
+        </form>
+    </div>
+      <!--BootStrap form ends here-->
+    <!-- Pre filled form example starts herer-->
+
+    <br><br>
+<h1>Pre Filled form Exampel starts herer</h1>
+<div class="col-m-6" >
+    <form #userForm="ngForm" (ngSubmit)="getFormData(userForm.value)">
+        <label for="email">Enter your Email </label>
+        <input type="email" [ngModel]="preUserData.email" name="email" placeholder="Email please" class="form-control">
+        <!--ngModel that partucular fiels with ngForm and hence with #id of the form-->
+        <br>
+        <input type="text" [ngModel]="preUserData.address" name="address" placeholder="Your addrees here" class="form-control">
+        <br>
+        <input type="number" [ngModel]="preUserData.mobile" name="mobile" placeholder="Your Mobile number here" class="form-control">
+        <br>
+        <button type="submit" class="btn btn-dark">Submit</button>
+        <br><br><hr>
+
+
+
+
+
+
+
+    </form>
+</div>
+
+<!-- Pre filled form example ends herer-->
+<!--reactive forms example starts here-->
+<!--import reactformModule from angular forms and import me likh lena hai in app.module.ts 
+  file me before making a reactive form uske badd partucular componet ki file me jake import FormGroup,FormControl,
+  and validators-->
+<h1 style="color: dodgerblue;">Reactive forms example starts here</h1>
+<div class="col-sm-6">
+
+ <form [formGroup]="loginForm" (ngSubmit)="getFormData(loginForm.value)"> 
+   <div>
+
+    <label >User Name</label>
+  <input type="email" formControlName="email" placeholder="Username" class="form-control">
+  <span class="error" *ngIf="email.invalid" >Email is Invalid</span>
+
+   </div>    
+  <!--<span class="error" *ngIf="email.invalid">Email is required</span><br>-->
+   <br>
+   <div><label >Address</label>
+    <input type="text" formControlName="address" placeholder="Your Address" class="form-control">
+    <span class="error" *ngIf="address.invalid" >Address is required</span></div> 
+    <br>
+    <div>
+      <label >Password</label>  
+<!-- You will have to import FormGroup FormcControl from @angular/forms and define them in class-->
+  <input type="password" name="password" formControlName="password" placeholder="Password" class="form-control"><br>
+  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Log in</button>
+    </div>
+  
+
+ </form>
+<br><br><br>
+
+</div>
+

@@ -1,0 +1,78 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Hii i am in app component</h1>
+            <br><br>
+            <h1 style="color: hotpink;">Forms Starts here</h1>
+            <hr>
+            <!--Form will be called from here-->
+            <app-forms></app-forms>
+              <!--Form will endhere-->
+
+    <app-servers></app-servers>
+    <app-successalert></app-successalert>
+    <!--<div app-servers>  </div> -->
+   <!-- <div class="app-servers"> </div> -->
+   
+   <input type="text" #box (keyup.enter)="clickEventTry(box.value)">  <!--here keyup()is an e
+    vent and #box is a id, normal keyup par key uthane par console me o/p jayega and keyup.enter me enter ke baad-->
+   <br><br>
+   <input type="text" #box (keydown.space)="keyDownEvent(box.value)">
+   <br><br>
+   <input type="text" #box (blur)="clickEventTry('blur event is happening')">
+   <br><br>
+   <h2 (mouseover)="clickEventTry2('Mouse over happening')"
+
+     style="background-color: aquamarine;">Mouse over event will happen on curser over the heading
+     </h2>
+     <br><br>
+     <h2 (mouseleave)="clickEventTry2('Mouse leave event will be happening on leaving mouse')"
+   
+     style="background-color: rosybrown;">Mouse over event will happen on curser over the heading
+     </h2>
+   <br><br>
+   
+   <!--<h2>{{eventPrint}}</h2>--> 
+   <br>
+
+
+  <button (click)="getdataFromUrl('Data from usrl')" > Getdata From URL of JSon</button>
+
+  <br><br>
+ 
+
+  <button (click)="clickEventTry('This is click event')">Click event try</button>
+
+  <br><br>
+
+   <table border="30" *ngIf="show2" >
+     <tr>
+         <td>id</td>
+         <td>title</td>
+        <td>userid</td>
+     </tr>
+     <tr *ngFor= "let item of data" >
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.userId}}</td>
+     </tr>
+   </table>
+
+
+
+
+        </div>
+    </div>
+</div>
+<!--Parent to child componenet sending example starst here-->
+<p>Here we will pass the data from parent to child </p>
+<div *ngFor="let item of dataToChild " class="container">
+    <app-amit-child (messageEvent)="handleDataFromChild($event)" [dataFromParent]="item"></app-amit-child>
+    <!--<app-amit-child (messageEvent)="messageEvent($event)"></app-amit-child>  
+        Yeh code step by step wale ke ways -->
+
+
+</div>
+ 
+

@@ -1,0 +1,23 @@
+<app-warningalert></app-warningalert>
+<p>Now you will see the example of for Loop in below table!</p>
+
+<!--<h2 *ngFor=" let item of table"  >
+    {{item}}
+</h2>   example of first noram loop with data in normal array-->
+
+<button (click)="showTableData(myName)">Show Table data</button>
+<br><br>
+<table border="30" *ngIf="show">
+ <tr>
+    <td>Name</td>
+    <td>Ages</td>
+    <td>Email</td>
+ </tr>
+ <tr *ngFor= "let item of data">
+    <td>{{item.name}}</td>
+    <td>{{item.age}}</td>
+    <td>{{item.email}}</td>
+ </tr>
+</table>
+
+<h1 *ngIf="show">Show if block for boolen value of show variable in ts file</h1>

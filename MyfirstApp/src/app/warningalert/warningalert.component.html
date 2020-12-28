@@ -1,0 +1,85 @@
+<p>Yoy are in wrong system!</p>
+<p>Below box typed value will be outputed</p>
+<!-- <input type="text" (keyup) = "getValueFromTextBox($event.target.value)" > --> 
+<input type="text" #box>
+<br><br>
+<button (click)="getValueFromTextBox(box.value)">Get Value from inputbox</button>
+<h3>{{printValue}}</h3>
+<br>
+<H2>Prperty binding and string Interpolation examples below with 2 input boxes</H2>
+<input type="text"  [disabled]="disabledBox" [value]="name">    <!-- <input propert bindinf ex --> 
+<br><br>  
+<input type="text" disabled ={{disabledBox}} value= {{name}}>     <!-- String Interpolation example ex --> 
+<br><br>
+<button (click)="ebaleTaxtBox()">Enable Tex Box</button>
+
+<!-- *ngIf Conditions starting Here --> 
+
+<h2>Examples of if and if else conditions are below </h2>
+<br>
+<h1 *ngIf="show" >This is only if conditon example with show value</h1>
+<!-- Here we are only checking if show ka value is true, here no elese conditions are given --> 
+<br><br>
+
+<br><br>
+
+<h2 *ngIf="show else elseBlock" >This is only if block of ng Template</h2>
+<!-- Here we checking if show ka value is true,agar nhi hai to elseblock  --> 
+
+<ng-template #elseBlock>
+
+    <h2> else block of ng template </h2>
+
+    </ng-template>
+<br><br>
+<!--Or We can use ng with #ifBlock and #elseBlock-->
+
+<!-- below Here we checking if show ka value is true then #ifblock ,agar nhi hai to #elseblock .
+ Also here we are using boolean values of by show2  also the #elseblock ya in general bole ID should be unique
+ --> 
+ <h2 *ngIf="show2 == 'No' ; then ifBlock else elseBlock2" >This is only if block of ng Template</h2>
+<ng-template #ifBlock>
+ <h2> Ifblock of ng template with string </h2>
+</ng-template>
+<ng-template #elseBlock2>
+ <h2> else block of ng templateAmitvcbvcghavschagvchjav </h2>
+</ng-template>
+<br><br>
+<!--If else if else if else below-->
+
+<ng-template [ngIf]="show3=='red' ">
+    <h2 back > Red Color block </h2>
+</ng-template>
+<ng-template [ngIf]="show3=='blue' ">
+    <h2 > Blue Color block </h2>
+</ng-template>
+<ng-template [ngIf]="show3=='yellow' ">
+    <h2> Yellow Color block </h2>
+</ng-template>
+
+<!-- Ends Here Here  Emojisss--> 
+<!-- Switch Case starts here -->
+<h1>Switch Case example will start here</h1>
+<div [ngSwitch]="color">
+    <h2 style="color: red;" *ngSwitchCase="'red'">
+         Red color block
+    </h2>
+    <h2 style="color: dodgerblue;" *ngSwitchCase="'blue'">
+        Dodgerblue color block
+    </h2>
+    <h2 style="color:yellow;" *ngSwitchCase="'yellow'">
+        Yellow color block
+    </h2>
+    <h2 style="color: pink;" *ngSwitchCase="'pink'">
+        Pink color block
+    </h2>
+    <h2 style="color: green;" *ngSwitchCase="'green'">
+        Green color block
+    </h2>
+    <h2 style="color: gray;" *ngSwitchDefault>
+        Grey Is the dafulat color here
+    </h2>
+   
+     
+
+</div>
